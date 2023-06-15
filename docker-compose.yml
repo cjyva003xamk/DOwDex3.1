@@ -1,0 +1,17 @@
+version: "3.8"
+
+services:
+  server31:
+    image: jschoise/dowd31
+    ports:
+      - 8080:8080
+    container_name: 31server
+    
+  watchtower31:
+    image: containrrr/watchtower
+    environment:
+      -  WATCHTOWER_POLL_INTERVAL=60 # Poll every 60 seconds
+    volumes:
+      - ./vol/docker.sock:/var/run/docker.sock
+    container_name: 31watchtower
+  
